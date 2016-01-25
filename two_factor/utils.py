@@ -21,7 +21,9 @@ def default_device(user):
 def backup_phones(user):
     if not user or user.is_anonymous():
         return PhoneDevice.objects.none()
-    return user.phonedevice_set.filter(name='backup')
+    # return user.phonedevice_set.filter(name='backup')
+    # TODO: fix this
+    return []
 
 
 def get_otpauth_url(accountname, secret, issuer=None, digits=None):

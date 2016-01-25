@@ -3,9 +3,10 @@ from base64 import b32encode
 import logging
 
 from django.conf import settings
-from django.contrib.auth import login as login, REDIRECT_FIELD_NAME
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
+from seahub.auth import login as login, REDIRECT_FIELD_NAME
+from seahub.auth.decorators import login_required
+# from django.contrib.auth.forms import AuthenticationForm
+from seahub.auth.forms import AuthenticationForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.urlresolvers import reverse
 from django.forms import Form
@@ -175,8 +176,10 @@ class LoginView(IdempotentSessionWizardView):
                 phone for phone in backup_phones(self.get_user())
                 if phone != self.get_device()]
             try:
-                context['backup_tokens'] = self.get_user().staticdevice_set\
-                    .get(name='backup').token_set.count()
+                # context['backup_tokens'] = self.get_user().staticdevice_set\
+                #     .get(name='backup').token_set.count()
+                # TODO: fix this
+                context['backup_tokens'] = 0
             except StaticDevice.DoesNotExist:
                 context['backup_tokens'] = 0
 

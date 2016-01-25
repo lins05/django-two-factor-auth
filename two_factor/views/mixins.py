@@ -5,7 +5,7 @@ except ImportError:
 
 from django.core.urlresolvers import reverse
 from django.template.response import TemplateResponse
-from django.contrib.auth import REDIRECT_FIELD_NAME
+from seahub.auth import REDIRECT_FIELD_NAME
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
 
